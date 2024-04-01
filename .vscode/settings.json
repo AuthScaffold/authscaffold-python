@@ -1,0 +1,6 @@
+{
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.typeCheckingMode": "strict",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.testing.pytestEnabled": true
+}
