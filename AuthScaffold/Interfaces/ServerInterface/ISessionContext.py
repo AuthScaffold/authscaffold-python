@@ -14,12 +14,35 @@ class ISessionContext(ABC):
         """
         pass
 
+    @property
+    @abstractmethod
+    def session_id(self) -> int:
+        """
+        Gets the session ID.
+
+        Returns:
+            int: The session ID.
+        """
+        pass
+
     @abstractmethod
     def close_session(self):
         """
         Closes the session.
         """
         pass
+
+    @abstractmethod
+    def is_session_complete(self) -> bool:
+        """
+        Indicates if the session is complete.
+
+        Returns:
+            bool: True if the session is complete, False otherwise.
+        """
+        pass
+
+
 
 
 

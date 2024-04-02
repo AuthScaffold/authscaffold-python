@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Optional
 from AuthScaffold.Interfaces.ServerInterface.IConnectionContext import IConnectionContext
 from AuthScaffold.Interfaces.ServerInterface.ISessionContext import ISessionContext
+from AuthScaffold.TACACS.Messages.Header import Header
 
 
 class ISessionManager(ABC):
@@ -17,7 +18,7 @@ class ISessionManager(ABC):
         pass
 
     @abstractmethod
-    def start_session(self, session_id : int, context : IConnectionContext) -> Optional[ISessionContext]:
+    def start_session(self, header : Header, context : IConnectionContext) -> Optional[ISessionContext]:
         """
         Opens a session.
 
@@ -25,21 +26,21 @@ class ISessionManager(ABC):
         should also negotiate single connection mode.
 
         Args:
-            session_id (int): The session ID.
+            header (Header): The session header.
             context (IConnectionContext): The connection context.
 
         Returns:
-            Optional[ISessionContext]: The session context. Null if the session ID is already in use.
+            Optional[ISessionContext]: The session context. Null if the session is already in use.
         """
         pass
 
     @abstractmethod
-    def get_session(self, session_id : int) -> Optional[ISessionContext]:
+    def get_session(self, header : Header) -> Optional[ISessionContext]:
         """
         Gets a session by its ID.
 
         Args:
-            session_id (int): The session ID.
+            header (Header): The session header.
 
         Returns:
             Optional[ISessionContext]: The session context if found, None otherwise.
